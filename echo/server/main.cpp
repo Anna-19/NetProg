@@ -21,7 +21,7 @@ int s = socket(AF_INET, SOCK_STREAM, 0);
 
 sockaddr_in * self_addr = new (sockaddr_in);
 self_addr->sin_family = AF_INET;
-self_addr->sin_port = htons(44212);
+self_addr->sin_port = htons(7777);
 self_addr->sin_addr.s_addr = inet_addr("127.0.0.1");
 
 int b = bind(s,(const sockaddr*) self_addr,sizeof(sockaddr_in));
@@ -40,9 +40,9 @@ while(true) {
     else {
 
         char msg[256];
-        recv(work_sock, msg, sizeof(msg), 0);
+        int size_msg = recv(work_sock, msg, sizeof(msg), 0);
         cout << "Сообщение клиента: " << '"' << msg << '"' << endl;
-        send(work_sock, msg, sizeof(msg), 0);
+        send(work_sock, msg, size_msg, 0);
         cout << "Сообщение было отправлено клиенту\n";
     }
 }

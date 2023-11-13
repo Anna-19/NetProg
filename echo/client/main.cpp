@@ -18,19 +18,19 @@ struct in_addr {
 
 sockaddr_in * addr = new (sockaddr_in);
 addr->sin_family = AF_INET; // интернет протокол IPv4
-addr->sin_port = htons(44212); // порт 44214
+addr->sin_port = htons(7777); // порт 44214
 addr->sin_addr.s_addr = inet_addr("127.0.0.1"); // localhost
 
 int s = socket(AF_INET, SOCK_STREAM, 0); // TCP
 
 sockaddr_in * self_addr = new (sockaddr_in);
 self_addr->sin_family = AF_INET; // интернет протокол IPv4
-self_addr->sin_port = htons(44212);
+self_addr->sin_port = htons(7777);
 self_addr->sin_addr.s_addr = inet_addr("127.0.0.1");
 
 sockaddr_in * srv_addr = new (sockaddr_in);
 srv_addr->sin_family = AF_INET; // интернет протокол IPv4
-srv_addr->sin_port = htons(44212);
+srv_addr->sin_port = htons(7777);
 srv_addr->sin_addr.s_addr = inet_addr("127.0.0.1");
 
 int rc = connect(s,(const sockaddr*)srv_addr, sizeof(sockaddr_in));
