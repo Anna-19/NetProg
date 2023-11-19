@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 int main() {
-    int server_socket = socket(AF_INET, SOCK_DGRAM, 0); // создаем UDP-сокет
+    int server_socket = socket(AF_INET, SOCK_DGRAM, 0);
 
     if (server_socket == -1) {
         std::cerr << "Ошибка при создании сокета" << std::endl;
@@ -17,7 +17,7 @@ int main() {
     std::memset(&server_address, 0, sizeof(server_address));
     server_address.sin_family = AF_INET;
     server_address.sin_addr.s_addr = INADDR_ANY;
-    server_address.sin_port = htons(44214); // например, используем порт 12345 для службы daytime
+    server_address.sin_port = htons(44214); 
 
     if (bind(server_socket, (sockaddr*)&server_address, sizeof(server_address)) == -1) {
         std::cerr << "Ошибка при привязке сокета" << std::endl;

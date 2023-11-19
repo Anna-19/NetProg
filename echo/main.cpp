@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 int main() {
-    int server_socket = socket(AF_INET, SOCK_STREAM, 0); // создаем TCP-сокет
+    int server_socket = socket(AF_INET, SOCK_STREAM, 0); 
 
     if (server_socket == -1) {
         std::cerr << "Ошибка при создании сокета" << std::endl;
@@ -34,8 +34,7 @@ int main() {
 
     sockaddr_in client_address;
     socklen_t client_address_len = sizeof(client_address);
-    int client_socket = accept(server_socket, (sockaddr*)&client_address, &client_address_len); // принимаем входящее соединение
-
+    int client_socket = accept(server_socket, (sockaddr*)&client_address, &client_address_len);
     if (client_socket == -1) {
         std::cerr << "Ошибка при принятии соединения" << std::endl;
         close(server_socket);
@@ -49,7 +48,7 @@ int main() {
         std::cerr << "Ошибка при получении данных" << std::endl;
     } else {
         send(client_socket, buffer, bytes_received, 0);
-        std::cout << "Получено и отправлено: " << buffer << std::endl;
+        std::cout << "Сообщение отправлено клиенту " << std::endl;
     }
 
     close(client_socket);
